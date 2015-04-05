@@ -1,0 +1,33 @@
+a{
+    color: #4c4;
+    cursor: pointer;
+    text-decoration: underline;
+}
+a:hover{
+    color: #777;
+}
+body{
+    background: #000;
+    color: #aaa;
+    font-family: sans-serif;
+    text-align: center;
+}
+.disabled{
+    border: 0;
+}
+div{
+    border: 1px solid #222;
+    display: inline-block;
+    padding: 9px;
+    width: 45%;
+}
+input{
+    background: #000;
+    color: #aaa;
+    font-size: 100%;
+    text-align: center;
+    width: 75px;
+}
+ul{
+    text-align: left;
+}

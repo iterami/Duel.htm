@@ -1,1 +1,1 @@
-# Duel.htm
+CC0 duel simulation web tool.
