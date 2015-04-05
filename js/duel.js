@@ -15,7 +15,7 @@ function duel(){
       && healths[1] > 0
       && turn_counter < 100){
         for(var player in players){
-            if(random_number(100) <= players[player]['health regen%']
+            if(random_number(100) < players[player]['health regen%']
               && healths[player] < players[player]['health']){
                 healths[player] = Math.min(
                   players[player]['health'],
@@ -50,6 +50,22 @@ function duel(){
                   + ' damage. '
                   + healths[1 - player]
                   + ' health remains.';
+
+                if(players[1 - player]['reflect'] > 0){
+                    damage = Math.max(0, players[1 - player]['reflect'] - players[1 - player]['defense']);
+
+                    healths[player] -= damage;
+
+                    output += '<li>Player '
+                      + (1 - player)
+                      + ' reflects '
+                      + damage
+                      + ' damage to Player '
+                      + player
+                      + '. '
+                      + healths[player]
+                      + ' health remains.';
+                }
 
             }else{
                 output += '<li>Player '
@@ -169,6 +185,7 @@ var stats = {
   'health': 10,
   'health regen%': 0,
   'hit%': 100,
+  'reflect': 0,
 };
 
 window.onkeydown = function(e){
