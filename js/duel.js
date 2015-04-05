@@ -15,6 +15,18 @@ function duel(){
       && healths[1] > 0
       && turn_counter < 100){
         for(var player in players){
+            if(random_number(100) <= players[player]['health regen%']
+              && healths[player] < players[player]['health']){
+                healths[player] = Math.min(
+                  players[player]['health'],
+                  healths[player] + 1
+                );
+
+                output += '<li>Player '
+                  + player
+                  + ' regenerated one health.';
+            }
+
             if(healths[player] <= 0){
                 output += '<li>Player '
                   + player
@@ -155,6 +167,7 @@ var stats = {
   'defense': 0,
   'dodge%': 0,
   'health': 10,
+  'health regen%': 0,
   'hit%': 100,
 };
 
