@@ -24,7 +24,10 @@ function duel(){
 
                 output += '<li>Player '
                   + player
-                  + ' regenerated one health.';
+                  + ' regenerated 1 health. '
+                  + healths[player]
+                  + '/'
+                  + players[player]['health'];
             }
 
             if(healths[player] <= 0){
@@ -49,7 +52,8 @@ function duel(){
                   + damage
                   + ' damage. '
                   + healths[1 - player]
-                  + ' health remains.';
+                  + '/'
+                  + players[1 - player]['health'];
 
                 if(players[1 - player]['reflect'] > 0){
                     damage = Math.max(0, players[1 - player]['reflect'] - players[1 - player]['defense']);
@@ -64,7 +68,8 @@ function duel(){
                       + player
                       + '. '
                       + healths[player]
-                      + ' health remains.';
+                      + '/'
+                      + players[player]['health'];
                 }
 
             }else{
