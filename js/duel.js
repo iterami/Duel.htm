@@ -91,6 +91,17 @@ function duel(){
     document.getElementById('duel').innerHTML = output;
 }
 
+function load(){
+    players = JSON.parse(
+      window.prompt(
+        'Input JSON for both players:',
+        ''
+      )
+    );
+
+    setmode(0);
+}
+
 function random_number(i){
     return Math.floor(Math.random() * i);
 }
@@ -111,11 +122,10 @@ function reset(skip){
 }
 
 function save(){
-    for(var player in players){
-        for(var stat in stats){
-            players[player][stat] = parseInt(document.getElementById(player + '-' + stat).value);
-        }
-    }
+    window.prompt(
+      'Save this String:',
+      JSON.stringify(players)
+    );
 }
 
 function setmode(newmode){
@@ -124,11 +134,17 @@ function setmode(newmode){
     var output = '';
 
     if(mode > 0){
-        save();
+        for(var player in players){
+            for(var stat in stats){
+                players[player][stat] = parseInt(document.getElementById(player + '-' + stat).value);
+            }
+        }
 
         can_duel = true;
 
-        output += '<a onclick=setmode(0)>Edit Players</a><br><div>Player 0<ul>';
+        output += '<a onclick=setmode(0)>Edit Players</a>'
+          + ', <a onclick=save()>Save</a>'
+          + '<br><div>Player 0<ul>';
 
         for(var stat in stats){
             output += '<li><input class=disabled disabled value='
@@ -171,7 +187,8 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><br><a onclick=reset(false)>Reset</a>';
+        output += '</ul></div><br><a onclick=reset(false)>Reset</a>'
+          + ', <a onclick=load()>Load</a>';
     }
 
     document.getElementById('page').innerHTML = output;
