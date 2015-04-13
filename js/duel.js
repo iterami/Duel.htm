@@ -5,12 +5,12 @@ function duel(){
 
     can_duel = false;
     var healths = [
-      players[0]['health'],
-      players[1]['health'],
+      players[0]['health current'],
+      players[1]['health current'],
     ];
     var manas = [
-      players[0]['mana'],
-      players[1]['mana'],
+      players[0]['mana current'],
+      players[1]['mana current'],
     ];
     var output = '<ul><li>Player 0 goes first!';
     var turn_counter = 0;
@@ -227,9 +227,11 @@ var stats = {
   'defense': 0,
   'dodge%': 0,
   'health': 10,
+  'health current': 10,
   'health regen%': 0,
   'hit%': 100,
   'mana': 5,
+  'mana current': 10,
   'mana regen%': 0,
   'reflect': 0,
 };
