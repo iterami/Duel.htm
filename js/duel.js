@@ -231,7 +231,7 @@ var stats = {
   'health regen%': 0,
   'hit%': 100,
   'mana': 5,
-  'mana current': 10,
+  'mana current': 5,
   'mana regen%': 0,
   'reflect': 0,
 };
