@@ -8,6 +8,10 @@ function duel(){
       players[0]['health'],
       players[1]['health'],
     ];
+    var manas = [
+      players[0]['mana'],
+      players[1]['mana'],
+    ];
     var output = '<ul><li>Player 0 goes first!';
     var turn_counter = 0;
 
@@ -36,6 +40,21 @@ function duel(){
                   + ' died.'
 
                 continue;
+            }
+
+            if(random_number(100) < players[player]['mana regen%']
+              && manas[player] < players[player]['mana']){
+                manas[player] = Math.min(
+                  players[player]['mana'],
+                  manas[player] + 1
+                );
+
+                output += '<li>Player '
+                  + player
+                  + ' replenished 1 mana. '
+                  + manas[player]
+                  + '/'
+                  + players[player]['mana'];
             }
 
             if(random_number(100) <= players[player]['hit%']
@@ -92,12 +111,15 @@ function duel(){
 }
 
 function load(){
-    players = JSON.parse(
-      window.prompt(
-        'Input JSON for both players:',
-        ''
-      )
+    var imported = window.prompt(
+      'Input JSON for both players:',
+      ''
     );
+    if(imported == null
+      || imported.length == 0){
+        return;
+    }
+    players = JSON.parse(imported);
 
     setmode(0);
 }
@@ -207,6 +229,8 @@ var stats = {
   'health': 10,
   'health regen%': 0,
   'hit%': 100,
+  'mana': 5,
+  'mana regen%': 0,
   'reflect': 0,
 };
 
