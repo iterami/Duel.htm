@@ -1,3 +1,5 @@
+'use strict';
+
 function duel(){
     if(!can_duel){
         return;
