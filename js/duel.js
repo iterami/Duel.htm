@@ -118,7 +118,7 @@ function load(){
       ''
     );
     if(imported == null
-      || imported.length == 0){
+      || imported.length === 0){
         return;
     }
     players = JSON.parse(imported);
