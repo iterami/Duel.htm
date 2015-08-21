@@ -12,9 +12,6 @@ body{
     font-family: sans-serif;
     text-align: center;
 }
-.disabled{
-    border: 0;
-}
 div{
     border: 1px solid #222;
     display: inline-block;
@@ -27,6 +24,9 @@ input{
     font-size: 100%;
     text-align: center;
     width: 75px;
+}
+input[readonly]{
+    border: 0;
 }
 ul{
     text-align: left;

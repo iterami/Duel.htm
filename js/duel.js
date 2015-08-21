@@ -171,7 +171,7 @@ function setmode(newmode){
           + '<br><div>Player 0<ul>';
 
         for(var stat in stats){
-            output += '<li><input class=disabled disabled value='
+            output += '<li><input readonly value='
               + players[0][stat]
               + '> '
               + stat;
@@ -180,7 +180,7 @@ function setmode(newmode){
         output += '</ul></div><div>Player 1<ul>';
 
         for(var stat in stats){
-            output += '<li><input class=disabled disabled value='
+            output += '<li><input readonly value='
               + players[1][stat]
               + '> '
               + stat;
