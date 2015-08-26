@@ -215,7 +215,7 @@ function setmode(newmode){
           + ', <a onclick=load()>Load</a>';
     }
 
-    document.getElementById('page').innerHTML = output;
+    document.body.innerHTML = output;
 }
 
 var can_duel = false;
