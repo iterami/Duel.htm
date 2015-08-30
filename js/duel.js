@@ -167,7 +167,7 @@ function setmode(newmode){
         can_duel = true;
 
         output += '<a onclick=setmode(0)>Edit Players</a>'
-          + ', <a onclick=save()>Save</a>'
+          + ' | <a onclick=save()>Save</a>'
           + '<br><div>Player 0<ul>';
 
         for(var stat in stats){
@@ -212,7 +212,7 @@ function setmode(newmode){
         }
 
         output += '</ul></div><br><a onclick=reset(false)>Reset</a>'
-          + ', <a onclick=load()>Load</a>';
+          + ' | <a onclick=load()>Load</a>';
     }
 
     document.body.innerHTML = output;
