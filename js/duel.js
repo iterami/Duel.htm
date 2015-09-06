@@ -186,7 +186,7 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><br><span id=duel><a onclick=duel()>Duel</a></span>';
+        output += '</ul></div><br><div id=duel><a onclick=duel()>Duel</a></div>';
 
     }else{
         output += '<a onclick=setmode(1)>Duel</a><br><div>Player 0<ul>';
