@@ -7,12 +7,12 @@ function duel(){
 
     can_duel = false;
     var healths = [
-      players[0]['health current'],
-      players[1]['health current'],
+      players[0]['health-current'],
+      players[1]['health-current'],
     ];
     var manas = [
-      players[0]['mana current'],
-      players[1]['mana current'],
+      players[0]['mana-current'],
+      players[1]['mana-current'],
     ];
     var output = '<ul><li>Player 0 goes first!';
     var turn_counter = 0;
@@ -21,7 +21,7 @@ function duel(){
       && healths[1] > 0
       && turn_counter < 100){
         for(var player in players){
-            if(random_number(100) < players[player]['health regen%']
+            if(random_number(100) < players[player]['health-regen%']
               && healths[player] < players[player]['health']){
                 healths[player] = Math.min(
                   players[player]['health'],
@@ -39,12 +39,12 @@ function duel(){
             if(healths[player] <= 0){
                 output += '<li>Player '
                   + player
-                  + ' died.'
+                  + ' lost the duel.'
 
                 continue;
             }
 
-            if(random_number(100) < players[player]['mana regen%']
+            if(random_number(100) < players[player]['mana-regen%']
               && manas[player] < players[player]['mana']){
                 manas[player] = Math.min(
                   players[player]['mana'],
@@ -229,12 +229,12 @@ var stats = {
   'defense': 0,
   'dodge%': 0,
   'health': 10,
-  'health current': 10,
-  'health regen%': 0,
+  'health-current': 10,
+  'health-regen%': 0,
   'hit%': 100,
   'mana': 5,
-  'mana current': 5,
-  'mana regen%': 0,
+  'mana-current': 5,
+  'mana-regen%': 0,
   'reflect': 0,
 };
 
