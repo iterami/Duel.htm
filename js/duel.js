@@ -160,7 +160,10 @@ function setmode(newmode){
     if(mode > 0){
         for(var player in players){
             for(var stat in stats){
-                players[player][stat] = parseInt(document.getElementById(player + '-' + stat).value);
+                players[player][stat] = parseInt(
+                  document.getElementById(player + '-' + stat).value,
+                  10
+                );
             }
         }
 
