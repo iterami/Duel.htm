@@ -241,29 +241,28 @@ var stats = {
   'reflect': 0,
 };
 
-window.onkeydown = function(e){
-    var key = e.keyCode || e.which;
-
-    if(mode > 0){
-        // ESC: return to main menu.
-        if(key === 27){
-            setmode(0);
-
-        // ENTER: duel.
-        }else if(key === 13){
-            duel();
-        }
-
-        return;
-    }
-
-    // ENTER: go to duel screen.
-    if(key === 13){
-        setmode(1);
-    }
-};
-
 window.onload = function(e){
+    init_input(
+      {
+        13: {
+          'todo': function(){
+              if(mode > 0){
+                  duel();
+
+              }else{
+                  setmode(1);
+              }
+          },
+        },
+        27: {
+          'todo': function(){
+              if(mode > 0){
+                  setmode(0);
+              }
+          },
+        },
+      }
+    );
     reset(true);
     setmode(0);
 };
