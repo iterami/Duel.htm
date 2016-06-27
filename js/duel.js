@@ -171,7 +171,7 @@ function setmode(newmode){
 
         output += '<a onclick=setmode(0)>Edit Players</a>'
           + ' | <a onclick=save()>Save</a>'
-          + '<br><div>Player 0<ul>';
+          + '<br><div class=inline>Player 0<ul>';
 
         for(var stat in stats){
             output += '<li><input readonly value='
@@ -180,7 +180,7 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><div>Player 1<ul>';
+        output += '</ul></div><div class=inline>Player 1<ul>';
 
         for(var stat in stats){
             output += '<li><input readonly value='
@@ -192,7 +192,7 @@ function setmode(newmode){
         output += '</ul></div><br><div id=duel><a onclick=duel()>Duel</a></div>';
 
     }else{
-        output += '<a onclick=setmode(1)>Duel</a><br><div>Player 0<ul>';
+        output += '<a onclick=setmode(1)>Duel</a><br><div class=inline>Player 0<ul>';
 
         for(var stat in stats){
             output += '<li><input id="0-'
@@ -203,7 +203,7 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><div>Player 1<ul>';
+        output += '</ul></div><div class=inline>Player 1<ul>';
 
         for(var stat in stats){
             output += '<li><input id="1-'
