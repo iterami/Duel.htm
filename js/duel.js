@@ -246,8 +246,8 @@ var stats = {
 };
 
 window.onload = function(e){
-    input_init(
-      {
+    input_init({
+      'keybinds': {
         13: {
           'todo': function(){
               if(mode > 0){
@@ -265,8 +265,8 @@ window.onload = function(e){
               }
           },
         },
-      }
-    );
+      },
+    });
     reset(true);
     setmode(0);
 };
