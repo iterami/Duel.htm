@@ -21,7 +21,7 @@ function duel(){
       && healths[1] > 0
       && turn_counter < 100){
         for(var player in players){
-            if(random_integer() < players[player]['health-regen%']
+            if(core_random_integer() < players[player]['health-regen%']
               && healths[player] < players[player]['health']){
                 healths[player] = Math.min(
                   players[player]['health'],
@@ -44,7 +44,7 @@ function duel(){
                 continue;
             }
 
-            if(random_integer() < players[player]['mana-regen%']
+            if(core_random_integer() < players[player]['mana-regen%']
               && manas[player] < players[player]['mana']){
                 manas[player] = Math.min(
                   players[player]['mana'],
@@ -59,8 +59,8 @@ function duel(){
                   + players[player]['mana'];
             }
 
-            if(random_integer() <= players[player]['hit%']
-              && random_integer() >= players[1 - player]['dodge%']){
+            if(core_random_integer() <= players[player]['hit%']
+              && core_random_integer() >= players[1 - player]['dodge%']){
                 var damage = Math.max(0, players[player]['damage'] - players[1 - player]['defense']);
 
                 healths[1 - player] -= damage;
