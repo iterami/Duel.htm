@@ -126,6 +126,32 @@ function load(){
     setmode(0);
 }
 
+function repo_init(){
+    core_input_binds_add({
+      'keybinds': {
+        13: {
+          'todo': function(){
+              if(mode > 0){
+                  duel();
+
+              }else{
+                  setmode(1);
+              }
+          },
+        },
+        27: {
+          'todo': function(){
+              if(mode > 0){
+                  setmode(0);
+              }
+          },
+        },
+      },
+    });
+    reset(true);
+    setmode(0);
+}
+
 function reset(skip){
     if(!skip
       && !window.confirm('Reset?')){
@@ -235,30 +261,4 @@ var stats = {
   'mana-current': 5,
   'mana-regen%': 0,
   'reflect': 0,
-};
-
-window.onload = function(e){
-    core_input_init({
-      'keybinds': {
-        13: {
-          'todo': function(){
-              if(mode > 0){
-                  duel();
-
-              }else{
-                  setmode(1);
-              }
-          },
-        },
-        27: {
-          'todo': function(){
-              if(mode > 0){
-                  setmode(0);
-              }
-          },
-        },
-      },
-    });
-    reset(true);
-    setmode(0);
 };
