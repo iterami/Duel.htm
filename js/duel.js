@@ -126,6 +126,12 @@ function load(){
     setmode(0);
 }
 
+function repo_escape(){
+    if(mode > 0){
+        setmode(0);
+    }
+}
+
 function repo_init(){
     core_events_bind({
       'keybinds': {
@@ -136,13 +142,6 @@ function repo_init(){
 
               }else{
                   setmode(1);
-              }
-          },
-        },
-        27: {
-          'todo': function(){
-              if(mode > 0){
-                  setmode(0);
               }
           },
         },
