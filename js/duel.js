@@ -133,6 +133,12 @@ function repo_escape(){
 }
 
 function repo_init(){
+    document.body.appendChild(core_html({
+      'properties': {
+        'id': 'wrapper',
+      },
+    }));
+
     core_events_bind({
       'keybinds': {
         13: {
@@ -239,7 +245,7 @@ function setmode(newmode){
           + ' | <a onclick=load()>Load</a>';
     }
 
-    document.body.innerHTML = output;
+    document.getElementById('wrapper').innerHTML = output;
 }
 
 var can_duel = false;
