@@ -135,7 +135,7 @@ function repo_escape(){
 function repo_init(){
     document.body.appendChild(core_html({
       'properties': {
-        'id': 'wrapper',
+        'id': 'wrap',
       },
     }));
 
@@ -245,7 +245,7 @@ function setmode(newmode){
           + ' | <a onclick=load()>Load</a>';
     }
 
-    document.getElementById('wrapper').innerHTML = output;
+    document.getElementById('wrap').innerHTML = output;
 }
 
 var can_duel = false;
