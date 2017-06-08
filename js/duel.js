@@ -133,12 +133,9 @@ function repo_escape(){
 }
 
 function repo_init(){
-    document.body.appendChild(core_html({
-      'properties': {
-        'id': 'wrap',
-      },
-    }));
-
+    core_repo_init({
+      'title': 'Duel.htm',
+    });
     core_events_bind({
       'keybinds': {
         13: {
@@ -153,6 +150,13 @@ function repo_init(){
         },
       },
     });
+
+    document.body.appendChild(core_html({
+      'properties': {
+        'id': 'wrap',
+      },
+    }));
+
     reset(true);
     setmode(0);
 }
