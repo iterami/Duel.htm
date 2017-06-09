@@ -134,9 +134,6 @@ function repo_escape(){
 
 function repo_init(){
     core_repo_init({
-      'title': 'Duel.htm',
-    });
-    core_events_bind({
       'keybinds': {
         13: {
           'todo': function(){
@@ -149,6 +146,7 @@ function repo_init(){
           },
         },
       },
+      'title': 'Duel.htm',
     });
 
     document.body.appendChild(core_html({
