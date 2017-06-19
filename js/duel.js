@@ -127,7 +127,7 @@ function load(){
 }
 
 function repo_escape(){
-    if(mode > 0){
+    if(core_mode > 0){
         setmode(0);
     }
 }
@@ -137,7 +137,7 @@ function repo_init(){
       'keybinds': {
         13: {
           'todo': function(){
-              if(mode > 0){
+              if(core_mode > 0){
                   duel();
 
               }else{
@@ -182,11 +182,11 @@ function save(){
 }
 
 function setmode(newmode){
-    mode = newmode;
+    core_mode = newmode;
 
     var output = '';
 
-    if(mode > 0){
+    if(core_mode > 0){
         for(var player in players){
             for(var stat in stats){
                 players[player][stat] = parseInt(
@@ -251,7 +251,6 @@ function setmode(newmode){
 }
 
 var can_duel = false;
-var mode = 0;
 var players = [
   {},
   {},
