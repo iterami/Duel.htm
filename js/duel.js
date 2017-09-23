@@ -149,11 +149,12 @@ function repo_init(){
       'title': 'Duel.htm',
     });
 
-    document.body.appendChild(core_html({
+    core_html({
+      'parent': document.body,
       'properties': {
         'id': 'wrap',
       },
-    }));
+    });
 
     reset(true);
     setmode(0);
