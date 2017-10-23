@@ -216,22 +216,3 @@ function setmode(newmode){
 
     document.getElementById('wrap').innerHTML = output;
 }
-
-var can_duel = false;
-var players = [
-  {},
-  {},
-];
-var stats = {
-  'damage': 1,
-  'defense': 0,
-  'dodge%': 0,
-  'health': 10,
-  'health-current': 10,
-  'health-regen%': 0,
-  'hit%': 100,
-  'mana': 5,
-  'mana-current': 5,
-  'mana-regen%': 0,
-  'reflect': 0,
-};
