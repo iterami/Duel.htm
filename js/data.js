@@ -156,7 +156,7 @@ function setmode(newmode){
     if(core_mode > 0){
         for(var player in players){
             for(var stat in stats){
-                players[player][stat] = parseInt(
+                players[player][stat] = Number.parseInt(
                   document.getElementById(player + '-' + stat).value,
                   10
                 );
