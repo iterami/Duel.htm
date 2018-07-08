@@ -6,21 +6,21 @@ function duel(){
     }
 
     can_duel = false;
-    var healths = [
+    let healths = [
       players[0]['health-current'],
       players[1]['health-current'],
     ];
-    var manas = [
+    let manas = [
       players[0]['mana-current'],
       players[1]['mana-current'],
     ];
-    var output = '<ul><li>Player 0 goes first!';
-    var turn_counter = 0;
+    let output = '<ul><li>Player 0 goes first!';
+    let turn_counter = 0;
 
     while(healths[0] > 0
       && healths[1] > 0
       && turn_counter < 100){
-        for(var player in players){
+        for(let player in players){
             if(core_random_integer() < players[player]['health-regen%']
               && healths[player] < players[player]['health']){
                 healths[player] = Math.min(
@@ -61,7 +61,7 @@ function duel(){
 
             if(core_random_integer() <= players[player]['hit%']
               && core_random_integer() >= players[1 - player]['dodge%']){
-                var damage = Math.max(0, players[player]['damage'] - players[1 - player]['defense']);
+                let damage = Math.max(0, players[player]['damage'] - players[1 - player]['defense']);
 
                 healths[1 - player] -= damage;
 
@@ -113,7 +113,7 @@ function duel(){
 }
 
 function load(){
-    var imported = window.prompt(
+    let imported = window.prompt(
       'Input JSON for both players:',
       ''
     );
@@ -132,8 +132,8 @@ function reset(skip){
         return;
     }
 
-    for(var player in players){
-        for(var stat in stats){
+    for(let player in players){
+        for(let stat in stats){
             players[player][stat] = stats[stat];
         }
     }
@@ -151,11 +151,11 @@ function save(){
 function setmode(newmode){
     core_mode = newmode;
 
-    var output = '';
+    let output = '';
 
     if(core_mode > 0){
-        for(var player in players){
-            for(var stat in stats){
+        for(let player in players){
+            for(let stat in stats){
                 players[player][stat] = Number.parseInt(
                   document.getElementById(player + '-' + stat).value,
                   10
@@ -169,7 +169,7 @@ function setmode(newmode){
           + ' | <a onclick=save()>Save</a>'
           + '<br><div class=inline>Player 0<ul>';
 
-        for(var stat in stats){
+        for(let stat in stats){
             output += '<li><input readonly value='
               + players[0][stat]
               + '> '
@@ -178,7 +178,7 @@ function setmode(newmode){
 
         output += '</ul></div><div class=inline>Player 1<ul>';
 
-        for(var stat in stats){
+        for(let stat in stats){
             output += '<li><input readonly value='
               + players[1][stat]
               + '> '
@@ -190,7 +190,7 @@ function setmode(newmode){
     }else{
         output += '<a onclick=setmode(1)>Duel</a><br><div class=inline>Player 0<ul>';
 
-        for(var stat in stats){
+        for(let stat in stats){
             output += '<li><input id="0-'
               + stat
               + '" value='
@@ -201,7 +201,7 @@ function setmode(newmode){
 
         output += '</ul></div><div class=inline>Player 1<ul>';
 
-        for(var stat in stats){
+        for(let stat in stats){
             output += '<li><input id="1-'
               + stat
               + '" value='
