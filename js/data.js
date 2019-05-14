@@ -165,8 +165,8 @@ function setmode(newmode){
 
         can_duel = true;
 
-        output += '<a onclick=setmode(0)>Edit Players</a>'
-          + ' | <a onclick=save()>Save</a>'
+        output += '<input onclick=setmode(0) type=button value="Edit Players">'
+          + '<input onclick=save() type=button value=Save>'
           + '<br><div class=inline>Player 0<ul>';
 
         for(let stat in stats){
@@ -185,10 +185,10 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><br><div id=duel><a onclick=duel()>Duel</a></div>';
+        output += '</ul></div><br><div id=duel><input onclick=duel() type=button value=Duel></div>';
 
     }else{
-        output += '<a onclick=setmode(1)>Duel</a><br><div class=inline>Player 0<ul>';
+        output += '<input onclick=setmode(1) type=button value=Duel><br><div class=inline>Player 0<ul>';
 
         for(let stat in stats){
             output += '<li><input id="0-'
@@ -210,8 +210,8 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><br><a onclick=reset(false)>Reset</a>'
-          + ' | <a onclick=load()>Load</a>';
+        output += '</ul></div><br><input onclick=reset(false) type=button value=Reset>'
+          + '<input onclick=load() type=button value=Load>';
     }
 
     document.getElementById('wrap').innerHTML = output;
