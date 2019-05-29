@@ -9,7 +9,6 @@ function repo_escape(){
 function repo_init(){
     core_repo_init({
       'globals': {
-        'can_duel': false,
         'players': [
           {},
           {},
