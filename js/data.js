@@ -9,7 +9,7 @@ function duel(){
       players[0]['mana-current'],
       players[1]['mana-current'],
     ];
-    let output = '<ul><li>Player 0 goes first!';
+    let output = '<ul><li>' + players[0]['id'] + ' goes first!';
     let turn_counter = 0;
 
     while(healths[0] > 0
@@ -23,8 +23,8 @@ function duel(){
                   healths[player] + 1
                 );
 
-                output += '<li>Player '
-                  + player
+                output += '<li>'
+                  + players[player]['id']
                   + ' regenerated 1 health. '
                   + healths[player]
                   + '/'
@@ -32,9 +32,7 @@ function duel(){
             }
 
             if(healths[player] <= 0){
-                output += '<li>Player '
-                  + player
-                  + ' lost the duel.'
+                output += '<li>' + players[player]['id'] + ' lost the duel.'
 
                 continue;
             }
@@ -46,8 +44,8 @@ function duel(){
                   manas[player] + 1
                 );
 
-                output += '<li>Player '
-                  + player
+                output += '<li>'
+                  + players[player]['id']
                   + ' replenished 1 mana. '
                   + manas[player]
                   + '/'
@@ -60,10 +58,10 @@ function duel(){
 
                 healths[1 - player] -= damage;
 
-                output += '<li>Player '
-                  + player
-                  + ' hits Player '
-                  + (1 - player)
+                output += '<li>'
+                  + players[player]['id']
+                  + ' hits '
+                  + players[1 - player]['id']
                   + ' for '
                   + damage
                   + ' damage. '
@@ -76,12 +74,12 @@ function duel(){
 
                     healths[player] -= damage;
 
-                    output += '<li>Player '
-                      + (1 - player)
+                    output += '<li>'
+                      + players[1 - player]['id']
                       + ' reflects '
                       + damage
-                      + ' damage to Player '
-                      + player
+                      + ' damage to '
+                      + players[player]['id']
                       + '. '
                       + healths[player]
                       + '/'
@@ -128,6 +126,8 @@ function reset(skip){
     }
 
     for(let player in players){
+        players[player]['id'] = 'Player ' + player;
+
         for(let stat in stats){
             players[player][stat] = stats[stat];
         }
@@ -150,6 +150,8 @@ function setmode(newmode){
 
     if(core_mode > 0){
         for(let player in players){
+            players[player]['id'] = document.getElementById(player + '-id').value;
+
             for(let stat in stats){
                 players[player][stat] = Number.parseInt(
                   document.getElementById(player + '-' + stat).value,
@@ -160,7 +162,9 @@ function setmode(newmode){
 
         output += '<input onclick=setmode(0) type=button value="Edit Players">'
           + '<input onclick=duel() type=button value="Start Duel">'
-          + '<br><div class=inline>Player 0<ul>';
+          + '<br><div class=inline><ul><li><input readonly value="'
+            + players[0]['id']
+            + '">';
 
         for(let stat in stats){
             output += '<li><input readonly value='
@@ -169,7 +173,9 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><div class=inline>Player 1<ul>';
+        output += '</ul></div><div class=inline><ul><li><input readonly value="'
+          + players[1]['id']
+          + '">';
 
         for(let stat in stats){
             output += '<li><input readonly value='
@@ -184,7 +190,9 @@ function setmode(newmode){
         output += '<input onclick=reset(false) type=button value=Reset>'
           + '<input onclick=save() type=button value=Save>'
           + '<input onclick=load() type=button value=Load>'
-          + '<input onclick=setmode(1) type=button value=Duel><br><div class=inline>Player 0<ul>';
+          + '<input onclick=setmode(1) type=button value=Duel><br><div class=inline><ul><li><input id=0-id value="'
+            + players[0]['id']
+            + '">';
 
         for(let stat in stats){
             output += '<li><input id="0-'
@@ -195,7 +203,9 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><div class=inline>Player 1<ul>';
+        output += '</ul></div><div class=inline><ul><li><input id=1-id value="'
+          + players[0]['id']
+          + '">';
 
         for(let stat in stats){
             output += '<li><input id="1-'
