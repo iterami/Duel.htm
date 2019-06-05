@@ -204,7 +204,7 @@ function setmode(newmode){
         }
 
         output += '</ul></div><div class=inline><ul><li><input id=1-id value="'
-          + players[0]['id']
+          + players[1]['id']
           + '">';
 
         for(let stat in stats){
