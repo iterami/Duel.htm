@@ -110,7 +110,7 @@ function load(){
       'Input JSON for both players:',
       ''
     );
-    if(imported == null
+    if(imported === null
       || imported.length === 0){
         return;
     }
