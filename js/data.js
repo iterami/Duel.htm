@@ -1,11 +1,11 @@
 'use strict';
 
 function duel(){
-    let healths = [
+    const healths = [
       players[0]['health-current'],
       players[1]['health-current'],
     ];
-    let manas = [
+    const manas = [
       players[0]['mana-current'],
       players[1]['mana-current'],
     ];
@@ -15,7 +15,7 @@ function duel(){
     while(healths[0] > 0
       && healths[1] > 0
       && turn_counter < 100){
-        for(let player in players){
+        for(const player in players){
             if(core_random_integer() < players[player]['health-regen%']
               && healths[player] < players[player]['health']){
                 healths[player] = Math.min(
@@ -106,7 +106,7 @@ function duel(){
 }
 
 function load(){
-    let imported = window.prompt(
+    const imported = window.prompt(
       'Input JSON for both players:',
       ''
     );
@@ -125,10 +125,10 @@ function reset(skip){
         return;
     }
 
-    for(let player in players){
+    for(const player in players){
         players[player]['id'] = 'Player ' + player;
 
-        for(let stat in stats){
+        for(const stat in stats){
             players[player][stat] = stats[stat];
         }
     }
@@ -149,10 +149,10 @@ function setmode(newmode){
     let output = '';
 
     if(core_mode > 0){
-        for(let player in players){
+        for(const player in players){
             players[player]['id'] = document.getElementById(player + '-id').value;
 
-            for(let stat in stats){
+            for(const stat in stats){
                 players[player][stat] = Number.parseInt(
                   document.getElementById(player + '-' + stat).value,
                   10
@@ -166,7 +166,7 @@ function setmode(newmode){
             + players[0]['id']
             + '">';
 
-        for(let stat in stats){
+        for(const stat in stats){
             output += '<li><input readonly value='
               + players[0][stat]
               + '> '
@@ -177,7 +177,7 @@ function setmode(newmode){
           + players[1]['id']
           + '">';
 
-        for(let stat in stats){
+        for(const stat in stats){
             output += '<li><input readonly value='
               + players[1][stat]
               + '> '
@@ -194,7 +194,7 @@ function setmode(newmode){
             + players[0]['id']
             + '">';
 
-        for(let stat in stats){
+        for(const stat in stats){
             output += '<li><input id="0-'
               + stat
               + '" value='
@@ -207,7 +207,7 @@ function setmode(newmode){
           + players[1]['id']
           + '">';
 
-        for(let stat in stats){
+        for(const stat in stats){
             output += '<li><input id="1-'
               + stat
               + '" value='
