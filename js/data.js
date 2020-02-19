@@ -106,7 +106,7 @@ function duel(){
 }
 
 function load(){
-    const imported = window.prompt(
+    const imported = globalThis.prompt(
       'Input JSON for both players:',
       ''
     );
@@ -121,7 +121,7 @@ function load(){
 
 function reset(skip){
     if(!skip
-      && !window.confirm('Reset both players?')){
+      && !globalThis.confirm('Reset both players?')){
         return;
     }
 
@@ -137,7 +137,7 @@ function reset(skip){
 }
 
 function save(){
-    window.prompt(
+    globalThis.prompt(
       'Save this String:',
       JSON.stringify(players)
     );
