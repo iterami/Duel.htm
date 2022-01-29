@@ -199,7 +199,7 @@ function setmode(newmode){
               + stat
               + '" value='
               + players[0][stat]
-              + '> '
+              + ' type=number> '
               + stat;
         }
 
@@ -212,7 +212,7 @@ function setmode(newmode){
               + stat
               + '" value='
               + players[1][stat]
-              + '> '
+              + ' type=number> '
               + stat;
         }
 
