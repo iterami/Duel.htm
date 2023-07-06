@@ -162,23 +162,23 @@ function setmode(newmode){
 
         output += '<input onclick=setmode(0) type=button value="Edit Players">'
           + '<input onclick=duel() type=button value="Start Duel">'
-          + '<br><div class=inline><ul><li><input readonly value="'
+          + '<br><div class=inline><ul><li><input readonly type=text value="'
             + players[0]['id']
             + '">';
 
         for(const stat in stats){
-            output += '<li><input readonly value='
+            output += '<li><input readonly type=text value='
               + players[0][stat]
               + '> '
               + stat;
         }
 
-        output += '</ul></div><div class=inline><ul><li><input readonly value="'
+        output += '</ul></div><div class=inline><ul><li><input readonly type=text value="'
           + players[1]['id']
           + '">';
 
         for(const stat in stats){
-            output += '<li><input readonly value='
+            output += '<li><input readonly type=text value='
               + players[1][stat]
               + '> '
               + stat;
@@ -190,7 +190,7 @@ function setmode(newmode){
         output += '<input onclick=reset(false) type=button value=Reset>'
           + '<input onclick=save() type=button value=Save>'
           + '<input onclick=load() type=button value=Load>'
-          + '<input onclick=setmode(1) type=button value=Duel><br><div class=inline><ul><li><input id=0-id value="'
+          + '<input onclick=setmode(1) type=button value=Duel><br><div class=inline><ul><li><input id=0-id type=text value="'
             + players[0]['id']
             + '">';
 
@@ -203,14 +203,14 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><div class=inline><ul><li><input id=1-id value="'
+        output += '</ul></div><div class=inline><ul><li><input id=1-id type=text value="'
           + players[1]['id']
           + '">';
 
         for(const stat in stats){
             output += '<li><input id="1-'
               + stat
-              + '" value='
+              + '" type=text value='
               + players[1][stat]
               + ' step=any type=number> '
               + stat;
