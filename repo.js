@@ -147,7 +147,7 @@ function repo_init(){
         },
       },
       'keybinds': {
-        13: {
+        'Enter': {
           'todo': function(){
               if(core_mode > 0){
                   duel();
@@ -263,7 +263,7 @@ function setmode(newmode){
         for(const stat in stats){
             output += '<li><input id="1-'
               + stat
-              + '" type=text value='
+              + '" value='
               + players[1][stat]
               + ' step=any type=number> '
               + stat;
