@@ -213,8 +213,8 @@ function setmode(newmode){
             }
         }
 
-        output += '<input onclick=setmode(0) type=button value="Edit Players">'
-          + '<input onclick=duel() type=button value="Start Duel">'
+        output += '<button onclick=setmode(0) type=button>Edit Players</button>'
+          + '<button onclick=duel() type=button>Start Duel</button>'
           + '<br><div class=inline><ul><li><input readonly type=text value="'
             + players[0]['id']
             + '">';
@@ -240,10 +240,10 @@ function setmode(newmode){
         output += '</ul></div><div id=duel></div>';
 
     }else{
-        output += '<input onclick=reset(false) type=button value=Reset>'
-          + '<input onclick=save() type=button value=Save>'
-          + '<input onclick=load() type=button value=Load>'
-          + '<input onclick=setmode(1) type=button value=Duel><br><div class=inline><ul><li><input id=0-id type=text value="'
+        output += '<button onclick=reset(false) type=button>Reset</button>'
+          + '<button onclick=save() type=button>Save</button>'
+          + '<button onclick=load() type=button>Load</button>'
+          + '<button onclick=setmode(1) type=button>Duel</button><br><div class=inline><ul><li><input id=0-id type=text value="'
             + players[0]['id']
             + '">';
 
