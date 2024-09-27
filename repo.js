@@ -1,9 +1,9 @@
 'use strict';
 
 function duel(){
-    const healths = [
-      players[0]['health-current'],
-      players[1]['health-current'],
+    const lifes = [
+      players[0]['life-current'],
+      players[1]['life-current'],
     ];
     const manas = [
       players[0]['mana-current'],
@@ -12,26 +12,26 @@ function duel(){
     let output = '<ul><li>' + players[0]['id'] + ' goes first!';
     let turn_counter = 0;
 
-    while(healths[0] > 0
-      && healths[1] > 0
+    while(lifes[0] > 0
+      && lifes[1] > 0
       && turn_counter < 100){
         for(const player in players){
-            if(core_random_integer() < players[player]['health-regen%']
-              && healths[player] < players[player]['health']){
-                healths[player] = Math.min(
-                  players[player]['health'],
-                  healths[player] + 1
+            if(core_random_integer() < players[player]['life-regen%']
+              && lifes[player] < players[player]['life']){
+                lifes[player] = Math.min(
+                  players[player]['life'],
+                  lifes[player] + 1
                 );
 
                 output += '<li>'
                   + players[player]['id']
-                  + ' regenerated 1 health. '
-                  + healths[player]
+                  + ' regenerated 1 life. '
+                  + lifes[player]
                   + '/'
-                  + players[player]['health'];
+                  + players[player]['life'];
             }
 
-            if(healths[player] <= 0){
+            if(lifes[player] <= 0){
                 output += '<li>' + players[player]['id'] + ' lost the duel.'
 
                 continue;
@@ -56,7 +56,7 @@ function duel(){
               && core_random_integer() >= players[1 - player]['dodge%']){
                 let damage = Math.max(0, players[player]['damage'] - players[1 - player]['defense']);
 
-                healths[1 - player] -= damage;
+                lifes[1 - player] -= damage;
 
                 output += '<li>'
                   + players[player]['id']
@@ -65,14 +65,14 @@ function duel(){
                   + ' for '
                   + damage
                   + ' damage. '
-                  + healths[1 - player]
+                  + lifes[1 - player]
                   + '/'
-                  + players[1 - player]['health'];
+                  + players[1 - player]['life'];
 
                 if(players[1 - player]['reflect'] > 0){
                     damage = Math.max(0, players[1 - player]['reflect'] - players[1 - player]['defense']);
 
-                    healths[player] -= damage;
+                    lifes[player] -= damage;
 
                     output += '<li>'
                       + players[1 - player]['id']
@@ -81,9 +81,9 @@ function duel(){
                       + ' damage to '
                       + players[player]['id']
                       + '. '
-                      + healths[player]
+                      + lifes[player]
                       + '/'
-                      + players[player]['health'];
+                      + players[player]['life'];
                 }
 
             }else{
@@ -136,10 +136,10 @@ function repo_init(){
           'damage': 1,
           'defense': 0,
           'dodge%': 0,
-          'health': 10,
-          'health-current': 10,
-          'health-regen%': 0,
           'hit%': 100,
+          'life': 10,
+          'life-current': 10,
+          'life-regen%': 0,
           'mana': 5,
           'mana-current': 5,
           'mana-regen%': 0,
