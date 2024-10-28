@@ -208,7 +208,7 @@ function setmode(newmode){
 
         output += '<button onclick=setmode(0) type=button>Edit Players</button>'
           + '<button onclick=duel() type=button>Start Duel</button>'
-          + '<br><div class=inline><ul><li><input readonly type=text value="'
+          + '<ul><li><input readonly type=text value="'
             + players[0]['id']
             + '">';
 
@@ -219,7 +219,7 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><div class=inline><ul><li><input readonly type=text value="'
+        output += '</ul><ul><li><input readonly type=text value="'
           + players[1]['id']
           + '">';
 
@@ -230,13 +230,13 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><div id=duel></div>';
+        output += '</ul><div id=duel></div>';
 
     }else{
         output += '<button onclick=reset(false) type=button>Reset</button>'
           + '<button onclick=save() type=button>Save</button>'
           + '<button onclick=load() type=button>Load</button>'
-          + '<button onclick=setmode(1) type=button>Duel</button><br><div class=inline><ul><li><input id=0-id type=text value="'
+          + '<button onclick=setmode(1) type=button>Duel</button><ul><li><input id=0-id type=text value="'
             + players[0]['id']
             + '">';
 
@@ -249,7 +249,7 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div><div class=inline><ul><li><input id=1-id type=text value="'
+        output += '</ul><ul><li><input id=1-id type=text value="'
           + players[1]['id']
           + '">';
 
@@ -262,7 +262,7 @@ function setmode(newmode){
               + stat;
         }
 
-        output += '</ul></div>';
+        output += '</ul>';
     }
 
     document.getElementById('wrap').innerHTML = output;
