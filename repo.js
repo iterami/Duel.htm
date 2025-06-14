@@ -2,88 +2,88 @@
 
 function duel(){
     const lifes = [
-      players[0]['life-current'],
-      players[1]['life-current'],
+      players[0].life_current,
+      players[1].life_current,
     ];
     const manas = [
-      players[0]['mana-current'],
-      players[1]['mana-current'],
+      players[0].mana_current,
+      players[1].mana_current,
     ];
-    let output = '<ul><li>' + players[0]['id'] + ' goes first!';
+    let output = '<ul><li>' + players[0].id + ' goes first!';
     let turn_counter = 0;
 
     while(lifes[0] > 0
       && lifes[1] > 0
       && turn_counter < 100){
         for(const player in players){
-            if(core_random_integer(100) < players[player]['life-regen%']
-              && lifes[player] < players[player]['life']){
+            if(core_random_integer(100) < players[player].life_regen
+              && lifes[player] < players[player].life){
                 lifes[player] = Math.min(
-                  players[player]['life'],
+                  players[player].life,
                   lifes[player] + 1
                 );
 
                 output += '<li>'
-                  + players[player]['id']
+                  + players[player].id
                   + ' regenerated 1 life. '
                   + lifes[player]
                   + '/'
-                  + players[player]['life'];
+                  + players[player].life;
             }
 
             if(lifes[player] <= 0){
-                output += '<li>' + players[player]['id'] + ' lost the duel.'
+                output += '<li>' + players[player].id + ' lost the duel.'
 
                 continue;
             }
 
-            if(core_random_integer(100) < players[player]['mana-regen%']
-              && manas[player] < players[player]['mana']){
+            if(core_random_integer(100) < players[player].mana_regen
+              && manas[player] < players[player].mana){
                 manas[player] = Math.min(
-                  players[player]['mana'],
+                  players[player].mana,
                   manas[player] + 1
                 );
 
                 output += '<li>'
-                  + players[player]['id']
+                  + players[player].id
                   + ' replenished 1 mana. '
                   + manas[player]
                   + '/'
-                  + players[player]['mana'];
+                  + players[player].mana;
             }
 
-            if(core_random_integer(100) <= players[player]['hit%']
-              && core_random_integer(100) >= players[1 - player]['dodge%']){
-                let damage = Math.max(0, players[player]['damage'] - players[1 - player]['defense']);
+            if(core_random_integer(100) <= players[player].hit
+              && core_random_integer(100) >= players[1 - player].dodge){
+                let damage = Math.max(0, players[player].damage - players[1 - player].defense);
 
                 lifes[1 - player] -= damage;
 
                 output += '<li>'
-                  + players[player]['id']
+                  + players[player].id
                   + ' hits '
-                  + players[1 - player]['id']
+                  + players[1 - player].id
                   + ' for '
                   + damage
                   + ' damage. '
                   + lifes[1 - player]
                   + '/'
-                  + players[1 - player]['life'];
+                  + players[1 - player].life;
 
-                if(players[1 - player]['reflect'] > 0){
-                    damage = Math.max(0, players[1 - player]['reflect'] - players[1 - player]['defense']);
+                if(players[1 - player].reflect > 0){
+                    damage = Math.max(0, players[1 - player].reflect - players[1 - player].defense);
 
                     lifes[player] -= damage;
 
                     output += '<li>'
-                      + players[1 - player]['id']
+                      + players[1 - player].id
                       + ' reflects '
                       + damage
                       + ' damage to '
-                      + players[player]['id']
+                      + players[player].id
                       + '. '
                       + lifes[player]
                       + '/'
-                      + players[player]['life'];
+                      + players[player].life;
                 }
 
             }else{
@@ -135,14 +135,14 @@ function repo_init(){
         'stats': {
           'damage': 1,
           'defense': 0,
-          'dodge%': 0,
-          'hit%': 100,
+          'dodge': 0,
+          'hit': 100,
           'life': 10,
-          'life-current': 10,
-          'life-regen%': 0,
+          'life_current': 10,
+          'life_regen': 0,
           'mana': 5,
-          'mana-current': 5,
-          'mana-regen%': 0,
+          'mana_current': 5,
+          'mana-regen': 0,
           'reflect': 0,
         },
       },
@@ -172,7 +172,7 @@ function reset(skip){
     }
 
     for(const player in players){
-        players[player]['id'] = 'Player ' + player;
+        players[player].id = 'Player ' + player;
 
         for(const stat in stats){
             players[player][stat] = stats[stat];
@@ -196,7 +196,7 @@ function setmode(newmode){
 
     if(core_mode > 0){
         for(const player in players){
-            players[player]['id'] = document.getElementById(player + '-id').value;
+            players[player].id = document.getElementById(player + '-id').value;
 
             for(const stat in stats){
                 players[player][stat] = Number.parseInt(
@@ -209,7 +209,7 @@ function setmode(newmode){
         output += '<button onclick=setmode(0) type=button>Edit Players</button>'
           + '<button onclick=duel() type=button>Start Duel</button>'
           + '<ul><li><input readonly type=text value="'
-            + players[0]['id']
+            + players[0].id
             + '">';
 
         for(const stat in stats){
@@ -220,7 +220,7 @@ function setmode(newmode){
         }
 
         output += '</ul><ul><li><input readonly type=text value="'
-          + players[1]['id']
+          + players[1].id
           + '">';
 
         for(const stat in stats){
@@ -237,7 +237,7 @@ function setmode(newmode){
           + '<button onclick=save() type=button>Save</button>'
           + '<button onclick=load() type=button>Load</button>'
           + '<button onclick=setmode(1) type=button>Duel</button><ul><li><input id=0-id type=text value="'
-            + players[0]['id']
+            + players[0].id
             + '">';
 
         for(const stat in stats){
@@ -250,7 +250,7 @@ function setmode(newmode){
         }
 
         output += '</ul><ul><li><input id=1-id type=text value="'
-          + players[1]['id']
+          + players[1].id
           + '">';
 
         for(const stat in stats){
