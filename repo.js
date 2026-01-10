@@ -148,7 +148,7 @@ function repo_init(){
       },
       'keybinds': {
         'Enter': {
-          'todo': function(){
+          'down': function(){
               if(core_mode > 0){
                   duel();
 
